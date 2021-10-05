@@ -22,6 +22,20 @@ public class Driver extends Users {
         this.modelOfVehicle = modelOfVehicle;
     }
 
+    public Driver(int id, String fullName, String userName) {
+        super(id, fullName, userName);
+    }
+
+    public Driver(int id, String fullName, String phoneNumber, String email, Gender gender,
+                  Date dateOfBirth, String nationalId, String userName, TypeOfVehicle typeOfVehicle,
+                  Color colorOfVehicle, String plaqueOfVehicle, String modelOfVehicle) {
+        super(id, fullName, phoneNumber, email, gender, dateOfBirth, nationalId, userName);
+        this.typeOfVehicle = typeOfVehicle;
+        this.colorOfVehicle = colorOfVehicle;
+        this.plaqueOfVehicle = plaqueOfVehicle;
+        this.modelOfVehicle = modelOfVehicle;
+    }
+
     public TypeOfVehicle getTypeOfVehicle() {
         return typeOfVehicle;
     }
