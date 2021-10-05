@@ -10,5 +10,8 @@ public class Passenger extends Users {
         super(fullName, phoneNumber, email, gender, dateOfBirth, nationalId, userName);
     }
 
-
+    public Passenger(int id, String fullName, String phoneNumber, String email, Gender gender,
+                     Date dateOfBirth, String nationalId, String userName) {
+        super(id, fullName, phoneNumber, email, gender, dateOfBirth, nationalId, userName);
+    }
 }
