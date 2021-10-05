@@ -17,6 +17,23 @@ public class Users {
     public Users() {
     }
 
+    public Users(int id, String fullName, String userName) {
+        this.id = id;
+        this.fullName = fullName;
+        this.userName = userName;
+    }
+
+    public Users(int id, String fullName, String phoneNumber, String email, Gender gender, Date dateOfBirth, String nationalId, String userName) {
+        this.id = id;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.nationalId = nationalId;
+        this.userName = userName;
+    }
+
     public Users(String fullName, String phoneNumber, String email, Gender gender,
                  Date dateOfBirth, String nationalId, String userName) {
         this.fullName = fullName;
@@ -30,10 +47,6 @@ public class Users {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFullName() {
@@ -91,4 +104,5 @@ public class Users {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
 }
