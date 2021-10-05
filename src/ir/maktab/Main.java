@@ -19,42 +19,47 @@ public class Main {
         DriverDao driverDao = new DriverDao();
         Scanner input = new Scanner(System.in);
         boolean exit = false;
-        do {
-            System.out.println("********* Choose an option *********");
-            System.out.println("1.Add a group of drivers \n2.Add a group of passengers \n3.Driver signup or login " +
-                    "\n4.Passenger signup or login \n5.Show a list of drivers \n6.Show a list of passengers \n7.exit");
-            int choice = input.nextInt();
-            switch (choice) {
-                case 1:
-                    addDriver();
-                    break;
-                case 2:
-                    addPassenger();
-                    break;
-                case 3:
-                    System.out.println("Username:");
-                    String user_name_d = input.next();
-                    driverDao.findDriver(user_name_d);
-                    break;
-                case 4:
-                    System.out.println("Username:");
-                    String user_name_p = input.next();
-                    passengerDao.findPassengers(user_name_p);
-                    break;
-                case 5:
-                    System.out.println("**** all drivers info ****");
-                    driverDao.showAllDrivers();
-                    break;
-                case 6:
-                    System.out.println("**** all passengers info ****");
-                    passengerDao.showAllPassengers();
-                    break;
-                case 7:
-                    exit = true;
-                default:
-                    System.out.println(" ");
-            }
-        } while (!exit);
+        try{
+            do {
+                System.out.println("********* Choose an option *********");
+                System.out.println("1.Add a group of drivers \n2.Add a group of passengers \n3.Driver signup or login " +
+                        "\n4.Passenger signup or login \n5.Show a list of drivers \n6.Show a list of passengers \n7.exit");
+                int choice = input.nextInt();
+                switch (choice) {
+                    case 1:
+                        addDriver();
+                        break;
+                    case 2:
+                        addPassenger();
+                        break;
+                    case 3:
+                        System.out.println("Username:");
+                        String user_name_d = input.next();
+                        driverDao.findDriver(user_name_d);
+                        break;
+                    case 4:
+                        System.out.println("Username:");
+                        String user_name_p = input.next();
+                        passengerDao.findPassengers(user_name_p);
+                        break;
+                    case 5:
+                        System.out.println("**** all drivers info ****");
+                        driverDao.showAllDrivers();
+                        break;
+                    case 6:
+                        System.out.println("**** all passengers info ****");
+                        passengerDao.showAllPassengers();
+                        break;
+                    case 7:
+                        exit = true;
+                    default:
+                        System.out.println(" ");
+                }
+            } while (!exit);
+        }catch (Exception exp){
+            System.out.println(exp.getMessage());
+            input.nextLine();
+        }
     }
 
     public static void addDriver() throws SQLException, ClassNotFoundException {
