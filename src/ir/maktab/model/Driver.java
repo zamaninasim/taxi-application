@@ -7,64 +7,25 @@ import ir.maktab.enums.TypeOfVehicle;
 import java.sql.Date;
 
 public class Driver extends Users {
-    private TypeOfVehicle typeOfVehicle;
-    private Color colorOfVehicle;
-    private String plaqueOfVehicle;
-    private String modelOfVehicle;
-
-    public Driver(String fullName, String phoneNumber, String email, Gender gender, Date dateOfBirth,
-                  String nationalId, String userName, TypeOfVehicle typeOfVehicle,
-                  Color colorOfVehicle, String plaqueOfVehicle, String modelOfVehicle) {
-        super(fullName, phoneNumber, email, gender, dateOfBirth, nationalId, userName);
-        this.typeOfVehicle = typeOfVehicle;
-        this.colorOfVehicle = colorOfVehicle;
-        this.plaqueOfVehicle = plaqueOfVehicle;
-        this.modelOfVehicle = modelOfVehicle;
-    }
-
-    public Driver(int id, String fullName, String userName) {
-        super(id, fullName, userName);
-    }
+    private Vehicle vehicle;
 
     public Driver(int id, String fullName, String phoneNumber, String email, Gender gender,
-                  Date dateOfBirth, String nationalId, String userName, TypeOfVehicle typeOfVehicle,
-                  Color colorOfVehicle, String plaqueOfVehicle, String modelOfVehicle) {
+                  Date dateOfBirth, String nationalId, String userName, Vehicle vehicle) {
         super(id, fullName, phoneNumber, email, gender, dateOfBirth, nationalId, userName);
-        this.typeOfVehicle = typeOfVehicle;
-        this.colorOfVehicle = colorOfVehicle;
-        this.plaqueOfVehicle = plaqueOfVehicle;
-        this.modelOfVehicle = modelOfVehicle;
+        this.vehicle = vehicle;
     }
 
-    public TypeOfVehicle getTypeOfVehicle() {
-        return typeOfVehicle;
+    public Driver(String fullName, String phoneNumber, String email, Gender gender,
+                  Date dateOfBirth, String nationalId, String userName, Vehicle vehicle) {
+        super(fullName, phoneNumber, email, gender, dateOfBirth, nationalId, userName);
+        this.vehicle = vehicle;
     }
 
-    public void setTypeOfVehicle(TypeOfVehicle typeOfVehicle) {
-        this.typeOfVehicle = typeOfVehicle;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public Color getColorOfVehicle() {
-        return colorOfVehicle;
-    }
-
-    public void setColorOfVehicle(Color colorOfVehicle) {
-        this.colorOfVehicle = colorOfVehicle;
-    }
-
-    public String getPlaqueOfVehicle() {
-        return plaqueOfVehicle;
-    }
-
-    public void setPlaqueOfVehicle(String plaqueOfVehicle) {
-        this.plaqueOfVehicle = plaqueOfVehicle;
-    }
-
-    public String getModelOfVehicle() {
-        return modelOfVehicle;
-    }
-
-    public void setModelOfVehicle(String modelOfVehicle) {
-        this.modelOfVehicle = modelOfVehicle;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }
