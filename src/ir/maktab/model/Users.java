@@ -1,5 +1,7 @@
 package ir.maktab.model;
 
+import ir.maktab.Trip.Location;
+import ir.maktab.Trip.Trip;
 import ir.maktab.enums.Gender;
 
 import java.sql.Date;
@@ -13,15 +15,8 @@ public class Users {
     private Date dateOfBirth;
     private String nationalId;
     private String userName;
-
-    public Users() {
-    }
-
-    public Users(int id, String fullName, String userName) {
-        this.id = id;
-        this.fullName = fullName;
-        this.userName = userName;
-    }
+    private Trip trip;
+    private Location location;
 
     public Users(int id, String fullName, String phoneNumber, String email, Gender gender, Date dateOfBirth, String nationalId, String userName) {
         this.id = id;
