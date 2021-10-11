@@ -1,5 +1,6 @@
 package ir.maktab.dataAccess;
 
+import ir.maktab.Exception.ExistUsernameException;
 import ir.maktab.enums.Gender;
 import ir.maktab.model.Passenger;
 
@@ -24,7 +25,7 @@ public class PassengerDao extends DataBaseAccess {
                     passenger.getDateOfBirth(), passenger.getNationalId(), passenger.getUserName());
             int i = statement.executeUpdate(sqlQuary);
             if (i == 1) {
-                System.out.println("Information was recorded");
+                System.out.println("passenger Information was recorded");
             }
             return 1;
         } else {
@@ -39,59 +40,34 @@ public class PassengerDao extends DataBaseAccess {
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             ArrayList<Passenger> arrayList = new ArrayList<>();
             while (resultSet.next()) {
-                Passenger passenger1 = new Passenger(resultSet.getInt(1), resultSet.getString(2),
-                        resultSet.getString(3), resultSet.getString(4), Gender.valueOf(resultSet.getString(5)),
-                        resultSet.getDate(6), resultSet.getString(7), resultSet.getString(8));
-                arrayList.add(passenger1);
+                Passenger passenger = new Passenger(resultSet.getInt("id"), resultSet.getString("full_name"),
+                        resultSet.getString("phone_number"), resultSet.getString("email"), Gender.getValue(resultSet.getString("gender").toUpperCase()),
+                        resultSet.getDate("date_of_birth"), resultSet.getString("national_id"), resultSet.getString("user_name"));
+                arrayList.add(passenger);
             }
-            for (Passenger passenger1 : arrayList) {
-                System.out.println("ID:" + passenger1.getId() + ",");
-                System.out.println("full_name:" + passenger1.getFullName() + ",");
-                System.out.println("phone_number:" + passenger1.getPhoneNumber() + ",");
-                System.out.println("email:" + passenger1.getEmail() + ",");
-                System.out.println("gender:" + passenger1.getGender() + ",");
-                System.out.println("date_of_birth:" + passenger1.getDateOfBirth() + ",");
-                System.out.println("national_id:" + passenger1.getNationalId() + ",");
-                System.out.println("user_name:" + passenger1.getUserName() + ",");
+            for (Passenger passenger : arrayList) {
+                System.out.println("ID:" + passenger.getId() + ",");
+                System.out.println("full_name:" + passenger.getFullName() + ",");
+                System.out.println("phone_number:" + passenger.getPhoneNumber() + ",");
+                System.out.println("email:" + passenger.getEmail() + ",");
+                System.out.println("gender:" + passenger.getGender() + ",");
+                System.out.println("date_of_birth:" + passenger.getDateOfBirth() + ",");
+                System.out.println("national_id:" + passenger.getNationalId() + ",");
+                System.out.println("user_name:" + passenger.getUserName() + ",");
                 System.out.println("**************************************");
             }
         }
     }
 
-    public int findPassengers(String user_name) throws SQLException, ClassNotFoundException {
-        int id = 0;
+    public boolean isPassengerExist(String user_name) throws SQLException, ExistUsernameException {
         String sqlQuery = String.format("SELECT id FROM drivers WHERE user_name = ?");
         PreparedStatement findDriverID = getConnection().prepareStatement(sqlQuery);
         findDriverID.setString(1, user_name);
         ResultSet resultSet = findDriverID.executeQuery();
         if (!resultSet.next()) {
-            System.out.println("*** You are not registered ***");
-            System.out.println("1.Register \n2.Exit");
-            Scanner input = new Scanner(System.in);
-            int choice = input.nextInt();
-            switch (choice) {
-                case 1:
-                    addPassenger();
-                    break;
-                case 2:
-                    System.out.println("*** You are back to the main menu ***");
-                    break;
-            }
-        } else {
-            id = resultSet.getInt(1);
-            System.out.println("*** welcome ****");
-            System.out.println("1.continue \n2.Exit");
-            Scanner input = new Scanner(System.in);
-            int choice = input.nextInt();
-            switch (choice) {
-                case 1:
-                    System.out.println("********** coming soon *************");
-                    break;
-                case 2:
-                    System.out.println("*** You are back to the main menu ***");
-                    break;
-            }
+            return false;
         }
-        return id;
+        return true;
+
     }
 }
