@@ -1,4 +1,4 @@
-package ir.maktab.trip;
+package ir.maktab.Trip;
 
 public class Location {
     private String latitude;
