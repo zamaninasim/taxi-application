@@ -1,7 +1,7 @@
 package ir.maktab.model;
 
 import ir.maktab.Trip.Location;
-import ir.maktab.Trip.Trip;
+import ir.maktab.Trip.Trips;
 import ir.maktab.enums.Gender;
 
 import java.sql.Date;
@@ -15,7 +15,7 @@ public class Users {
     private Date dateOfBirth;
     private String nationalId;
     private String userName;
-    private Trip trip;
+    private Trips trip;
     private Location location;
 
     public Users(int id, String fullName, String phoneNumber, String email, Gender gender, Date dateOfBirth, String nationalId, String userName) {
