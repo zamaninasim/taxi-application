@@ -1,15 +1,19 @@
 package ir.maktab.enums;
 
+import java.util.Locale;
+
 public enum Gender {
-    FEMALE("f"),
-    MALE("m");
-    private String abrr;
-
-    Gender(String abrr) {
-        this.abrr = abrr;
-    }
-
-    public String getAbrr() {
-        return abrr;
+    FEMALE,
+    MALE,
+    NONE;
+    public static Gender getValue(String name){
+        switch (name.toLowerCase()){
+            case "female":
+                return FEMALE;
+            case "male":
+                return MALE;
+            default:
+                return NONE;
+        }
     }
 }
